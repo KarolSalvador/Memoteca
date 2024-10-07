@@ -20,6 +20,10 @@ async function manipularSubmissaoFormulario(event) {
   const autoria = document.getElementById("pensamento-autoria").value
   const data = document.getElementById("pensamento-data").value
 
+  if(!validarData(data)){
+    alert("Não é permitido o cadastro de datas futuras. Selecione outra data.")
+  }
+  
   try {
     if (id) {
       await api.editarPensamento({ id, conteudo, autoria, data })
@@ -46,4 +50,10 @@ async function manipularBusca() {
     
   }
   
+}
+
+function validarData(data) {
+  const dataAtual = new Date() //caso não receba parâmetro ele passa a data atual
+  const dataInserida = new Date(data)
+  return dataInserida <= dataAtual
 }
