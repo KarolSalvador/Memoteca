@@ -29,7 +29,7 @@ const api = {
       const data = converterStringParaData(pensamento.data)
       const response = await axios.post(`${URL_BASE}/pensamentos`, {
         ...pensamento,//spread operator, pega as propriedades que a variável já tinha e adiciona a variável informada a seguir
-        data
+        data: data.toISOString()
       })
       return await response.data
     }
