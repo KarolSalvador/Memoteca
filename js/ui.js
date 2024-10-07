@@ -59,7 +59,9 @@ const ui = {
     pensamentoAutoria.classList.add("pensamento-autoria")
 
     const pensamentoData = document.createElement("div")
-    pensamentoData.textContent = pensamento.data
+    const dataFormatada = pensamento.data.toLocaleDateString('pt-BR')
+
+    pensamentoData.textContent = dataFormatada
     pensamentoData.classList.add("pensamento-data")
 
     const botaoEditar = document.createElement("button")
