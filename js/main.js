@@ -1,10 +1,16 @@
 import ui from "./ui.js"
 import api from "./api.js"
 
-const regexConteudo = /^[A-Za-z\s]{10,}$/
+const regexConteudo = /^[A-Za-z\s]{10,}$/;
 
 function validarConteudo(conteudo) {
   return regexConteudo.test(conteudo)
+}
+
+const regexAutoria = /^[A-Za-z]{3,15}$/;
+
+function validarAutoria(autoria) {
+  return regexAutoria.test(autoria)
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -28,6 +34,11 @@ async function manipularSubmissaoFormulario(event) {
 
   if(!validarConteudo(conteudo)) {
     alert("É permitida a inclusão apenas de letras e espaços com no mínimo 10 caracteres.")
+    return
+  }
+
+  if(!validarAutoria(autoria)) {
+    alert("A autoria deve conter o mínimo de 3 e o máximo de 15 caracteres e não é permitido a inserção de espaço.")
     return
   }
 
