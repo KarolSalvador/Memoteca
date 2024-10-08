@@ -7,7 +7,7 @@ async function adicionarChaveAoPensamento() {
   try {
     const pensamentos= await api.buscarPensamentos()
     pensamentos.forEach(pensamento => {
-      const chavePensamento = `${conteudo.trim().toLowerCase()}-${autoria.trim().toLowerCase()}`
+      const chavePensamento = `${pensamento.conteudo.trim().toLowerCase()}-${pensamento.autoria.trim().toLowerCase()}`
       pensamentosSet.add(chavePensamento)
     })
   } catch (error) {
@@ -33,6 +33,7 @@ function validarAutoria(autoria) {
 
 document.addEventListener("DOMContentLoaded", () => {
   ui.renderizarPensamentos()
+  adicionarChaveAoPensamento()
 
   const formularioPensamento = document.getElementById("pensamento-form")
   const botaoCancelar = document.getElementById("botao-cancelar")
