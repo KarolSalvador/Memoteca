@@ -11,7 +11,7 @@ function validarConteudo(conteudo) {
   return regexConteudo.test(conteudo)
 }
 
-const regexAutoria = /^[a-zA-Z]{3,15}$/;
+const regexAutoria = /^[A-Za-zÀ-ÖØ-öø-ÿ\s.,!?()'":;]{3,15}$/;
 
 function validarAutoria(autoria) {
   return regexAutoria.test(autoria)
