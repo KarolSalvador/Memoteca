@@ -1,6 +1,8 @@
 import ui from "./ui.js"
 import api from "./api.js"
 
+const pensamentosSet = new Set()
+
 function removerEspacos(string) {
   return string.replaceAll(/\s+/g, '')
 }
@@ -51,6 +53,13 @@ async function manipularSubmissaoFormulario(event) {
 
   if(!validarData(data)){
     alert("Não é permitido o cadastro de datas futuras. Selecione outra data.")
+  }
+
+  const chaveNovoPensamento = `${conteudo.trim().toLowerCase()}-${autoria.trim().toLowerCase()}`
+
+  if(pensamentosSet.has(chaveNovoPensamento)) {
+    alert('Esse pensamento já existe.')
+    return
   }
 
   try {
