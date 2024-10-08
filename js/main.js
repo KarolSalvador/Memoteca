@@ -3,6 +3,18 @@ import api from "./api.js"
 
 const pensamentosSet = new Set()
 
+async function adicionarChaveAoPensamento() {
+  try {
+    const pensamentos= await api.buscarPensamentos()
+    pensamentos.forEach(pensamento => {
+      const chavePensamento = `${conteudo.trim().toLowerCase()}-${autoria.trim().toLowerCase()}`
+      pensamentosSet.add(chavePensamento)
+    })
+  } catch (error) {
+    alert('Erro ao adicionar chave ao pensamento.')
+  }
+}
+
 function removerEspacos(string) {
   return string.replaceAll(/\s+/g, '')
 }
